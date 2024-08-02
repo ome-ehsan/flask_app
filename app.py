@@ -14,7 +14,7 @@ db = SQLAlchemy(app)
 # databse models
 class Tasks(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    task = db.Column(db.String(150), nullable = False )
+    task = db.Column(db.String(150), nullable = False)
     completed = db.Column(db.Integer, default = 0)
     created = db.Column(db.DateTime, default = datetime.now)
     
@@ -28,7 +28,23 @@ class Tasks(db.Model):
 # homepage of my app
 @app.route("/", method = ["POST","GET"])  # http methods to add task to db and get tasks from db
 def index(): #homepage
-    return render_template("index.html")
+    
+    #add a task
+    if request.method == "POST" :
+        # gotta grab the task from 'form in index.html'
+        grabbed_task = request.form["content"]
+        task_to_be_sent = Tasks(task = grabbed_task)
+        try:
+            db.session.add(task_to_be_sent)
+            db.session.commit()
+        except Exception as e:
+            print(f"ERROR : {e}")
+            return f"ERROR : {e}"
+        
+    #get tasks
+    else:
+        tasks = Tasks.query.order_by(Tasks.created).all()
+        return render_template("index.html", tasks = tasks)
 
 
 if __name__ in "__main__":
