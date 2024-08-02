@@ -26,7 +26,7 @@ class Tasks(db.Model):
    
     
 # homepage of my app
-@app.route("/", method = ["POST","GET"])  # http methods to add task to db and get tasks from db
+@app.route("/", methods = ["POST","GET"])  # http methods to add task to db and get tasks from db
 def index(): #homepage
     
     #add a task
@@ -37,6 +37,7 @@ def index(): #homepage
         try:
             db.session.add(task_to_be_sent)
             db.session.commit()
+            return redirect("/")  #after adding a task it should come back to the homepage
         except Exception as e:
             print(f"ERROR : {e}")
             return f"ERROR : {e}"
