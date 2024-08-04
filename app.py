@@ -60,7 +60,7 @@ def delete(id:int): #as tasks are saved in db we gotta grab from the db hence th
 def edit(id:int):
     grabbed_task = Tasks.query.get_or_404(id)
     if request.method == "POST":
-        grabbed_task.task = request.form["content"]
+        grabbed_task.task = request.form["content"]   #grabbing from update.html 
         try:
             db.session.commit()
             return redirect("/")
@@ -70,11 +70,7 @@ def edit(id:int):
         return render_template("update.html" , task = grabbed_task)
         
             
-            
-            
-    
-    
-    
+  
 
 if __name__ in "__main__":
     with app.app_context():

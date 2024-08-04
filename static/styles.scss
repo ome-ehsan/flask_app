@@ -1,5 +1,84 @@
-body {
+// color variables 
+$bg_color: #36454F;
+$content_bg_color: #e5e5e5;
+$hover_color: #586773;
 
-   background-color: burlywood;
+body { 
+   font-family: 'Courier New', Courier, monospace;
+   background-color: $bg_color;
+   margin: 0;
+   padding: 0;
+}
+
+
+.content {
+   max-width: 800px;
+   margin: 50px auto;
+   padding: 50px;
+   border-radius: 20px;
+   text-align: center;
+   background-color: $content_bg_color;
+   box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.25), 
+   5px 6px 6px rgba(0, 0, 0, 0.22);
+   
+
+   h1 {
+      font-size: 40px;
+      color: $bg_color;
+   }
+   
+
+   h3 {
+      font-size: 22px;
+      color: $bg_color;
+   }
+
+
+   table {
+      width: 100%;
+      margin-top: 10px;
+      border-collapse: collapse;
+      th,td {
+         color: $bg_color;
+         font-size: 20px;
+         padding: 10px;
+         border: 2px solid $bg_color;
+      }
+   }
+
+
+   a {
+      display: inline-block;
+      padding: 6px 12px;
+      margin: 5px;
+      border-radius: 20px;
+      background-color: $bg_color;
+      color: white;
+      text-decoration: none;
+      box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.15), 
+      2px 2px 4px rgba(0, 0, 0, 0.10);
+      &:hover {
+         background-color: $hover_color;
+      }
+   }
+   
+   input {
+      color: black;
+      font-size: 18px;
+      padding: 10px;
+      margin-top: 25px;
+      border: solid 2px;
+      border-color: $bg_color;
+      border-radius: 5px;
+   }
+   
+   #btn_add{
+      background-color: $bg_color;
+      color: white;
+      cursor: pointer;
+      &:hover {
+         background-color: $hover_color;
+      }
+   }
 
 }
